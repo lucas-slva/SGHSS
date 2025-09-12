@@ -11,7 +11,11 @@
     <list default="true" id="b1812684-e043-4f0d-90c6-0b2e2bd810ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/dotnet.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/dotnet.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGHSS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGHSS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGHSS.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGHSS.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGHSS.Api/SGHSS.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGHSS.Api/SGHSS.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGHSS.Core/SGHSS.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGHSS.Core/SGHSS.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGHSS.Infrastructure/SGHSS.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGHSS.Infrastructure/SGHSS.Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGHSS.Tests/SGHSS.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGHSS.Tests/SGHSS.Tests.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +106,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757677354388</updated>
-      <workItem from="1757677355960" duration="3144000" />
+      <workItem from="1757677355960" duration="3918000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit: solution structure, README and .gitignore">
       <option name="closed" value="true" />
@@ -120,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757680676194</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="chore(ci): add GitHub Actions badge and update workflow to .NET 9.0">
+      <option name="closed" value="true" />
+      <created>1757681211775</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1757681211775</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,7 +144,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit: solution structure, README and .gitignore" />
     <MESSAGE value="add github actions workflow" />
-    <option name="LAST_COMMIT_MESSAGE" value="add github actions workflow" />
+    <MESSAGE value="chore(ci): add GitHub Actions badge and update workflow to .NET 9.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(ci): add GitHub Actions badge and update workflow to .NET 9.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
