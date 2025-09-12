@@ -9,7 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1812684-e043-4f0d-90c6-0b2e2bd810ef" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/dotnet.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/dotnet.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGHSS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGHSS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +102,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757677354388</updated>
-      <workItem from="1757677355960" duration="2482000" />
+      <workItem from="1757677355960" duration="3144000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit: solution structure, README and .gitignore">
       <option name="closed" value="true" />
@@ -110,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757678766885</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add github actions workflow">
+      <option name="closed" value="true" />
+      <created>1757680676194</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757680676194</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,7 +131,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit: solution structure, README and .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit: solution structure, README and .gitignore" />
+    <MESSAGE value="add github actions workflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="add github actions workflow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

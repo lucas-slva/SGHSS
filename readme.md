@@ -7,6 +7,7 @@
 ![xUnit](https://img.shields.io/badge/xUnit-Testing-5B2A89?style=flat-square&logo=xunit&logoColor=white)
 ![Serilog](https://img.shields.io/badge/Serilog-Logging-512BD4?style=flat-square&logo=nuget&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![.NET 9 CI](https://github.com/lucas-slva/SGHSS/actions/workflows/dotnet.yml/badge.svg)
 
 
 
