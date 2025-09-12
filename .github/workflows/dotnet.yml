@@ -26,4 +26,4 @@ jobs:
         run: dotnet build SGHSS.sln --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test SGHSS.sln --no-build --verbosity normal
+        run: dotnet test SGHSS.sln --logger "console;verbosity=detailed"

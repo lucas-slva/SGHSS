@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace SGHSS.Tests;
 
 public class DummyTests
