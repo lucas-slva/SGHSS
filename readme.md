@@ -16,7 +16,7 @@
 SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API robusta desenvolvida em **.NET 8** para gerenciamento de pacientes, profissionais e consultas, com autenticação JWT e boas práticas de arquitetura.
 
 
-## 🚀 Features
+### 🚀 Features
 - [x] Setup inicial do projeto (.NET 8, Solution, GitHub Actions)
 - [x] Definição da arquitetura (Core, Api, Infrastructure, Tests)
 - [x] Configuração do SQL Server via Docker + Docker Compose
@@ -33,20 +33,18 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 
 &nbsp;
 
-## 🏗️ Project Architecture
+### 🏗️ Project Architecture
 ```
-
 /SGHSS
-├── SGHSS.Api          -> Projeto Web API (.NET 8)
-├── SGHSS.Core         -> Entidades, DTOs, Interfaces
+├── SGHSS.Api            -> Projeto Web API (.NET 8)
+├── SGHSS.Core           -> Entidades, DTOs, Interfaces
 ├── SGHSS.Infrastructure -> EF Core, Contexto, Repositórios
-├── SGHSS.Tests        -> Testes unitários
-
+├── SGHSS.Tests          -> Testes unitários
 ```
 
 &nbsp;
 
-## 📦 Tech Stack
+### 📦 Tech Stack
 - **.NET 8.0**
 - **Entity Framework Core 8**
 - **SQL Server (via Docker)**
@@ -57,4 +55,67 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 - **FluentValidation** para validação
 - **xUnit & Moq** para testes
 - **GitHub Actions** para CI/CD
-- - **Docker Compose** para orquestração do banco
+- **Docker Compose** para orquestração do banco
+
+&nbsp;
+
+---
+## 🔧 Getting Started
+
+### ✅ Pré-requisitos
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (para o SQL Server)
+
+### ▶️ Como rodar o projeto
+
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/seu-usuario/SGHSS.git
+   cd SGHSS
+   ```
+2. **Suba o banco de dados via Docker**
+
+   ```bash
+   docker-compose up -d
+   #Isso vai iniciar o SQL Server 2022 na porta `1433`.
+   ```
+
+3. **Restaure e compile o projeto**
+
+   ```bash
+   dotnet restore
+   dotnet build
+   ```
+
+4. **Rode a API**
+
+   ```bash
+   dotnet run --project SGHSS.Api
+   ```
+
+5. **Acesse a API**
+
+    * Swagger UI: [https://localhost:7001/swagger](https://localhost:7001/swagger)
+    * Health Check básico: [https://localhost:7001](https://localhost:7001)
+
+&nbsp;
+
+### 🛠️ Estrutura do Banco
+
+* **Banco:** SGHSS
+* **Usuário:** `sa`
+* **Senha:** `Your_password123` (definida no `docker-compose.yml`)
+* **Porta:** `1433`
+
+> ⚠️ O banco é criado e atualizado automaticamente via **Entity Framework Core Migrations**.
+
+&nbsp;
+
+### 🧪 Rodando os Testes
+
+Para executar todos os testes unitários:
+
+```bash
+dotnet test SGHSS.sln
+```
+
