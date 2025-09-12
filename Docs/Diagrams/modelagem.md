@@ -114,5 +114,3 @@ A modelagem define claramente:
 - A **estrutura orientada a objetos** (UML).
 - O **modelo lógico relacional** (DER).
 - Regras de unicidade (CPF, Email) e integridade referencial (FKs).
-
-Com esses diagramas, garantimos que o sistema SGHSS possui uma base sólida de dados e entidades para evoluir nas próximas etapas do projeto.

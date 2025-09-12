@@ -7,6 +7,7 @@
 ![xUnit](https://img.shields.io/badge/xUnit-Testing-5B2A89?style=flat-square&logo=xunit&logoColor=white)
 ![Serilog](https://img.shields.io/badge/Serilog-Logging-512BD4?style=flat-square&logo=nuget&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-SQL%20Server-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![.NET 9 CI](https://github.com/lucas-slva/SGHSS/actions/workflows/dotnet.yml/badge.svg)
 
 
@@ -16,6 +17,9 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 
 
 ## 🚀 Features
+- [x] Setup inicial do projeto (.NET 8, Solution, GitHub Actions)
+- [x] Definição da arquitetura (Core, Api, Infrastructure, Tests)
+- [x] Configuração do SQL Server via Docker + Docker Compose
 - [ ] Autenticação com JWT
 - [ ] CRUD de Pacientes
 - [ ] CRUD de Profissionais
@@ -45,7 +49,7 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 ## 📦 Tech Stack
 - **.NET 8.0**
 - **Entity Framework Core 8**
-- **SQL Server / PostgreSQL**
+- **SQL Server (via Docker)**
 - **JWT Authentication**
 - **Swagger / Swashbuckle**
 - **Serilog** para logging estruturado
@@ -53,3 +57,4 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 - **FluentValidation** para validação
 - **xUnit & Moq** para testes
 - **GitHub Actions** para CI/CD
+- - **Docker Compose** para orquestração do banco
