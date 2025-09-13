@@ -2,7 +2,7 @@
 
 ![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=dotnet&logoColor=white)
 ![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework%20Core-8.0-512BD4?style=flat-square&logo=dotnet&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-Secure-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-UI-85EA2D?style=flat-square&logo=swagger&logoColor=black)
 ![xUnit](https://img.shields.io/badge/xUnit-Testing-5B2A89?style=flat-square&logo=xunit&logoColor=white)
 ![Serilog](https://img.shields.io/badge/Serilog-Logging-512BD4?style=flat-square&logo=nuget&logoColor=white)
@@ -25,10 +25,10 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 - [x] CRUD de Consultas
 - [x] Seed Data inicial no banco
 - [x] Validações com FluentValidation
+- [x] Documentação de Endpoints com Swagger
+- [x] Autenticação com JWT
 - [ ] Logs com Serilog + Middleware Customizado
-- [ ] Autenticação com JWT
 - [ ] Testes Unitários com xUnit
-- [ ] Documentação de Endpoints com Swagger
 - [ ] CI/CD com GitHub Actions
 
 &nbsp;
@@ -37,8 +37,8 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 ```
 /SGHSS
 ├── SGHSS.Api            -> Projeto Web API (.NET 8)
-├── SGHSS.Core           -> Entidades, DTOs, Interfaces
-├── SGHSS.Infrastructure -> EF Core, Contexto, Repositórios
+├── SGHSS.Core           -> Entidades, DTOs, Services, Validators
+├── SGHSS.Infrastructure -> EF Core, Data, Mappings, Migrations
 ├── SGHSS.Tests          -> Testes unitários
 ```
 
@@ -49,7 +49,7 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 - **Entity Framework Core 8**
 - **SQL Server (via Docker)**
 - **JWT Authentication**
-- **Swagger / Swashbuckle**
+- **Swagger** (com botão de autenticação JWT)
 - **Serilog** para logging estruturado
 - **AutoMapper** para mapeamento DTO ↔ Entidade
 - **FluentValidation** para validação
@@ -94,19 +94,34 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 
 5. **Acesse a API**
 
-    * Swagger UI: [https://localhost:7001/swagger](https://localhost:7001/swagger)
-    * Health Check básico: [https://localhost:7001](https://localhost:7001)
+    * Swagger UI: [https://localhost:5293/swagger](https://localhost:7001/swagger)
+    * Health Check básico: [https://localhost:5293](https://localhost:7001)
 
-&nbsp;
+### 🔑 Autenticação
 
-### 🛠️ Estrutura do Banco
+#### O login é feito via endpoint:
 
-* **Banco:** SGHSS
-* **Usuário:** `sa`
-* **Senha:** `Your_password123` (definida no `docker-compose.yml`)
-* **Porta:** `1433`
+```
+POST /api/auth/login
+{
+  "email": "admin@sghss.com",
+  "senha": "admin123"
+}
+```
 
-> ⚠️ O banco é criado e atualizado automaticamente via **Entity Framework Core Migrations**.
+#### Resposta (exemplo):
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR..."
+}
+```
+
+#### O token deve ser enviado no header:
+
+```
+Authorization: Bearer {token}
+```
 
 &nbsp;
 

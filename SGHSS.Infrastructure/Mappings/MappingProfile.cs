@@ -20,7 +20,11 @@ public class MappingProfile : Profile
         CreateMap<Consulta, ConsultaDto>()
             .ForMember(dest => dest.PacienteNome, opt => opt.MapFrom(src => src.Paciente!.Nome))
             .ForMember(dest => dest.ProfissionalNome, opt => opt.MapFrom(src => src.Profissional!.Nome));
-
         CreateMap<Consulta, CreateConsultaDto>().ReverseMap();
+        
+        // Usuário
+        CreateMap<Usuario, UsuarioDto>();
+        CreateMap<RegisterUsuarioDto, Usuario>()
+            .ForMember(dest => dest.SenhaHash, opt => opt.Ignore());
     }
 }

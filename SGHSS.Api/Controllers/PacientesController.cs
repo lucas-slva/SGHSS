@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SGHSS.Core.DTOs;
@@ -9,10 +10,12 @@ namespace SGHSS.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class PacientesController(SghssContext context, IMapper mapper) : ControllerBase
 {
     // GET: api/pacientes
     [HttpGet]
+    [AllowAnonymous] // 🔓
     public async Task<ActionResult<IEnumerable<PacienteDto>>> GetPacientes()
     {
         var pacientes = await context.Pacientes.ToListAsync();
@@ -21,6 +24,7 @@ public class PacientesController(SghssContext context, IMapper mapper) : Control
 
     // GET: api/pacientes/5
     [HttpGet("{id:int}")]
+    [AllowAnonymous] // 🔓
     public async Task<ActionResult<PacienteDto>> GetPaciente(int id)
     {
         var paciente = await context.Pacientes.FindAsync(id);
@@ -32,6 +36,7 @@ public class PacientesController(SghssContext context, IMapper mapper) : Control
 
     // POST: api/pacientes
     [HttpPost]
+    [AllowAnonymous] // 🔓
     public async Task<ActionResult<PacienteDto>> CreatePaciente(CreatePacienteDto dto)
     {
         var paciente = mapper.Map<Paciente>(dto);
@@ -45,6 +50,7 @@ public class PacientesController(SghssContext context, IMapper mapper) : Control
 
     // PUT: api/pacientes/5
     [HttpPut("{id:int}")]
+    [Authorize] // 🔒 precisa estar logado
     public async Task<IActionResult> UpdatePaciente(int id, PacienteDto dto)
     {
         if (id != dto.Id)
@@ -62,6 +68,7 @@ public class PacientesController(SghssContext context, IMapper mapper) : Control
 
     // DELETE: api/pacientes/5
     [HttpDelete("{id:int}")]
+    [Authorize(Roles = "Admin")] // 🔒 Apenas Admin pode deletar
     public async Task<IActionResult> DeletePaciente(int id)
     {
         var paciente = await context.Pacientes.FindAsync(id);

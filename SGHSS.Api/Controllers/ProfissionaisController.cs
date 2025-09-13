@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SGHSS.Core.DTOs;
@@ -9,10 +10,12 @@ namespace SGHSS.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ProfissionaisController(SghssContext context, IMapper mapper) : ControllerBase
 {
     // GET: api/profissionais
     [HttpGet]
+    [AllowAnonymous] // 🔓
     public async Task<ActionResult<IEnumerable<ProfissionalDto>>> GetProfissionais()
     {
         var profissionais = await context.Profissionais.ToListAsync();
@@ -21,6 +24,7 @@ public class ProfissionaisController(SghssContext context, IMapper mapper) : Con
 
     // GET: api/profissionais/5
     [HttpGet("{id:int}")]
+    [AllowAnonymous] // 🔓
     public async Task<ActionResult<ProfissionalDto>> GetProfissional(int id)
     {
         var profissional = await context.Profissionais.FindAsync(id);
@@ -32,6 +36,7 @@ public class ProfissionaisController(SghssContext context, IMapper mapper) : Con
 
     // POST: api/profissionais
     [HttpPost]
+    [AllowAnonymous] // 🔓
     public async Task<ActionResult<ProfissionalDto>> CreateProfissional(CreateProfissionalDto dto)
     {
         var profissional = mapper.Map<Profissional>(dto);
@@ -45,6 +50,7 @@ public class ProfissionaisController(SghssContext context, IMapper mapper) : Con
 
     // PUT: api/profissionais/5
     [HttpPut("{id:int}")]
+    [Authorize] // 🔒 precisa estar autenticado
     public async Task<IActionResult> UpdateProfissional(int id, ProfissionalDto dto)
     {
         if (id != dto.Id)
@@ -62,6 +68,7 @@ public class ProfissionaisController(SghssContext context, IMapper mapper) : Con
 
     // DELETE: api/profissionais/5
     [HttpDelete("{id:int}")]
+    [Authorize(Roles = "Admin")] // 🔒 Apenas Admin pode deletar
     public async Task<IActionResult> DeleteProfissional(int id)
     {
         var profissional = await context.Profissionais.FindAsync(id);

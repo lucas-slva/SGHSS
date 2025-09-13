@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SGHSS.Core.DTOs;
@@ -9,10 +10,12 @@ namespace SGHSS.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ConsultasController(SghssContext context, IMapper mapper) : ControllerBase
 {
     // GET: api/consultas
     [HttpGet]
+    [AllowAnonymous] // 🔓
     public async Task<ActionResult<IEnumerable<ConsultaDto>>> GetConsultas()
     {
         var consultas = await context.Consultas
@@ -25,6 +28,7 @@ public class ConsultasController(SghssContext context, IMapper mapper) : Control
 
     // GET: api/consultas/5
     [HttpGet("{id:int}")]
+    [AllowAnonymous] // 🔓
     public async Task<ActionResult<ConsultaDto>> GetConsulta(int id)
     {
         var consulta = await context.Consultas
@@ -40,6 +44,7 @@ public class ConsultasController(SghssContext context, IMapper mapper) : Control
 
     // POST: api/consultas
     [HttpPost]
+    [Authorize] // 🔒 apenas usuários autenticados podem cadastrar uma consulta
     public async Task<ActionResult<ConsultaDto>> CreateConsulta(CreateConsultaDto dto)
     {
         var consulta = mapper.Map<Consulta>(dto);
@@ -54,6 +59,7 @@ public class ConsultasController(SghssContext context, IMapper mapper) : Control
 
     // PUT: api/consultas/5
     [HttpPut("{id:int}")]
+    [Authorize] // 🔒 precisa estar autenticado
     public async Task<IActionResult> UpdateConsulta(int id, ConsultaDto dto)
     {
         if (id != dto.Id)
@@ -71,6 +77,7 @@ public class ConsultasController(SghssContext context, IMapper mapper) : Control
 
     // DELETE: api/consultas/5
     [HttpDelete("{id:int}")]
+    [Authorize(Roles = "Admin")] // 🔒 Apenas Admin pode deletar
     public async Task<IActionResult> DeleteConsulta(int id)
     {
         var consulta = await context.Consultas.FindAsync(id);
