@@ -1,12 +1,24 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using SGHSS.Core.Validations;
 using SGHSS.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adicionar controllers
+// Adicionar controllers + FluentValidation
 builder.Services.AddControllers();
 
-// Adicionar Swagger (documentação)
+// FluentValidation
+builder.Services.AddFluentValidationAutoValidation();
+
+// Descobrir e registrar todos os validators do assembly onde está CreatePacienteDtoValidator
+builder.Services.AddValidatorsFromAssemblyContaining<CreatePacienteDtoValidator>();
+
+// Adicionar AutoMapper
+builder.Services.AddAutoMapper(typeof(SGHSS.Infrastructure.Mappings.MappingProfile));
+
+// Adicionar Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

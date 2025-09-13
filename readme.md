@@ -20,13 +20,13 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 - [x] Setup inicial do projeto (.NET 8, Solution, GitHub Actions)
 - [x] Definição da arquitetura (Core, Api, Infrastructure, Tests)
 - [x] Configuração do SQL Server via Docker + Docker Compose
-- [ ] Autenticação com JWT
-- [ ] CRUD de Pacientes
-- [ ] CRUD de Profissionais
-- [ ] CRUD de Consultas
-- [ ] Validações com FluentValidation
+- [x] CRUD de Pacientes
+- [x] CRUD de Profissionais
+- [x] CRUD de Consultas
+- [x] Seed Data inicial no banco
+- [x] Validações com FluentValidation
 - [ ] Logs com Serilog + Middleware Customizado
-- [ ] Seed Data inicial no banco
+- [ ] Autenticação com JWT
 - [ ] Testes Unitários com xUnit
 - [ ] Documentação de Endpoints com Swagger
 - [ ] CI/CD com GitHub Actions

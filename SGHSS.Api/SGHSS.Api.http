@@ -1,6 +1,127 @@
-@SGHSS.Api_HostAddress = http://localhost:5293
+### Pacientes
 
-GET {{SGHSS.Api_HostAddress}}/weatherforecast/
+# Lista todos os pacientes
+GET http://localhost:5293/api/pacientes
 Accept: application/json
 
 ###
+
+# Retorna um paciente por ID
+GET http://localhost:5293/api/pacientes/1
+Accept: application/json
+
+###
+
+# Cria um novo paciente
+POST http://localhost:5293/api/pacientes
+Content-Type: application/json
+
+{
+  "nome": "João da Silva",
+  "cpf": "12345678901",
+  "dataNascimento": "1990-01-01"
+}
+
+###
+
+# Atualiza um paciente existente
+PUT http://localhost:5293/api/pacientes/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nome": "João da Silva Atualizado",
+  "cpf": "12345678901",
+  "dataNascimento": "1990-01-01"
+}
+
+###
+
+# Remove um paciente
+DELETE http://localhost:5293/api/pacientes/1
+
+
+### Profissionais
+
+# Lista todos os profissionais
+GET http://localhost:5293/api/profissionais
+Accept: application/json
+
+###
+
+# Retorna um profissional por ID
+GET http://localhost:5293/api/profissionais/1
+Accept: application/json
+
+###
+
+# Cria um novo profissional
+POST http://localhost:5293/api/profissionais
+Content-Type: application/json
+
+{
+  "nome": "Dra. Maria Oliveira",
+  "cpf": "98765432100",
+  "especialidade": "Cardiologia"
+}
+
+###
+
+# Atualiza um profissional existente
+PUT http://localhost:5293/api/profissionais/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nome": "Dra. Maria Oliveira Atualizada",
+  "cpf": "98765432100",
+  "especialidade": "Cardiologia"
+}
+
+###
+
+# Remove um profissional
+DELETE http://localhost:5293/api/profissionais/1
+
+
+### Consultas
+
+# Get all consultas
+GET {{baseUrl}}/api/consulta
+Accept: application/json
+
+# Get consulta by ID
+GET {{baseUrl}}/api/consulta/1
+Accept: application/json
+
+###
+
+# Create consulta
+POST {{baseUrl}}/api/consulta
+Content-Type: application/json
+
+{
+  "dataConsulta": "2025-09-14T10:00:00",
+  "status": "Agendada",
+  "pacienteId": 1,
+  "profissionalId": 1
+}
+
+###
+
+# Update consulta
+PUT {{baseUrl}}/api/consulta/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "dataConsulta": "2025-09-15T15:30:00",
+  "status": "Concluída",
+  "pacienteId": 1,
+  "profissionalId": 1
+}
+
+###
+
+# Delete consulta
+DELETE {{baseUrl}}/api/consulta/1
