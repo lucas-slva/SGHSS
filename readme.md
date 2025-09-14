@@ -29,7 +29,7 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 ✅ Autenticação com JWT  
 ✅ Logs com Serilog + Middleware Customizado  
 ✅ Testes Unitários com xUnit  
-⬜ CI/CD com GitHub Actions
+✅ CI/CD com GitHub Actions
 
 &nbsp;
 
@@ -86,6 +86,7 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (para o SQL Server)
 
+&nbsp;
 ### ▶️ Como rodar o projeto
 
 1. **Clone o repositório**
@@ -117,6 +118,8 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 
     * Swagger UI: [https://localhost:5293/swagger](https://localhost:7001/swagger)
     * Health Check básico: [https://localhost:5293](https://localhost:7001)
+
+&nbsp;
 
 ### 🔑 Autenticação
 
@@ -188,5 +191,29 @@ Total tests: 29
      Skipped: 0
 Test execution time: 1.4s
 ```
+&nbsp;
 
-Com isso, asseguramos que a API está **totalmente coberta nos principais cenários** e pronta para ser evoluída com segurança 🚀.
+## ⚙️ CI/CD com GitHub Actions
+
+O projeto utiliza **GitHub Actions** para garantir **integração contínua (CI)** e **entrega contínua (CD)**.
+A pipeline é disparada automaticamente a cada **push** ou **pull request** na branch `master`.
+
+### 🔄 Etapas da Pipeline
+
+1. **Checkout do repositório** → Baixa o código para o ambiente de build.
+2. **Setup .NET 8** → Configura o ambiente com o SDK do .NET 8.
+3. **Restore dependencies** → Restaura os pacotes NuGet.
+4. **Build** → Compila a solução em modo *Release*.
+5. **Run tests** → Executa todos os testes unitários do projeto (`SGHSS.Tests`).
+
+### ✅ Benefícios
+
+* Garantia de que o projeto **compila sem erros** em qualquer ambiente.
+* Execução automática de **testes unitários** a cada alteração no repositório.
+* Maior confiabilidade no código antes de qualquer merge na branch principal.
+* Pipeline pública e visível.
+
+&nbsp;
+
+## 📧 **Contato**
+Meu LinkedIn: [Lucas Silva](https://www.linkedin.com/in/-lucassva/)

@@ -19,6 +19,14 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Cache NuGet packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
       - name: Restore dependencies
         run: dotnet restore SGHSS.sln
 
@@ -26,4 +34,11 @@ jobs:
         run: dotnet build SGHSS.sln --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test SGHSS.sln --logger "console;verbosity=detailed"
+        run: dotnet test SGHSS.sln --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: '**/TestResults/*.trx'
