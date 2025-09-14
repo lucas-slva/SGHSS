@@ -27,7 +27,7 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 - [x] Validações com FluentValidation
 - [x] Documentação de Endpoints com Swagger
 - [x] Autenticação com JWT
-- [ ] Logs com Serilog + Middleware Customizado
+- [x] Logs com Serilog + Middleware Customizado
 - [ ] Testes Unitários com xUnit
 - [ ] CI/CD com GitHub Actions
 
@@ -51,6 +51,7 @@ SGHSS (**Sistema de Gestão Hospitalar e de Serviços de Saúde**) é uma API ro
 - **JWT Authentication**
 - **Swagger** (com botão de autenticação JWT)
 - **Serilog** para logging estruturado
+- **Middleware global de tratamento de erros** para respostas padronizadas
 - **AutoMapper** para mapeamento DTO ↔ Entidade
 - **FluentValidation** para validação
 - **xUnit & Moq** para testes

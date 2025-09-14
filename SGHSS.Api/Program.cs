@@ -7,9 +7,21 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using SGHSS.Api.Middlewares;
 using SGHSS.Core.Services;
 
+// Configurar Serilog
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/sghss-.log", rollingInterval: RollingInterval.Day)
+    .Enrich.FromLogContext()
+    .CreateLogger();
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Integrar o Serilog
+builder.Host.UseSerilog();
 
 // Configuração de serviços
 ConfigureServices(builder);
@@ -18,6 +30,9 @@ var app = builder.Build();
 
 // Configuração do pipeline HTTP
 ConfigurePipeline(app);
+
+// testar o serilog
+Log.Information("🚀 SGHSS API inicializada com sucesso!");
 
 app.Run();
 
@@ -92,6 +107,32 @@ void ConfigureServices(WebApplicationBuilder webApplicationBuilder)
                 ValidAudience = jwtSettings["Audience"],
                 IssuerSigningKey = new SymmetricSecurityKey(key)
             };
+
+            // Customizando resposta 401 e 403
+            options.Events = new JwtBearerEvents
+            {
+                OnChallenge = context =>
+                {
+                    context.HandleResponse(); // evita resposta padrão
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    context.Response.ContentType = "application/json";
+                    return context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(new
+                    {
+                        statusCode = 401,
+                        message = "Token inválido ou ausente. Faça login para continuar."
+                    }));
+                },
+                OnForbidden = context =>
+                {
+                    context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                    context.Response.ContentType = "application/json";
+                    return context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(new
+                    {
+                        statusCode = 403,
+                        message = "Você não tem permissão para acessar este recurso."
+                    }));
+                }
+            };
         });
     
     // Serviço de autenticação
@@ -108,6 +149,8 @@ void ConfigurePipeline(WebApplication webApplication)
     }
 
     webApplication.UseHttpsRedirection();
+    
+    webApplication.UseGlobalErrorHandling();
 
     webApplication.UseAuthentication();
     webApplication.UseAuthorization();
